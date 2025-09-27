@@ -146,3 +146,54 @@ def test_insert_at_empty_list(ll):
     ll.insert_at(0, 123)
     assert ll.head.data == 123
 
+def test_remove_by_value_empty_list(ll, capsys):
+    ll.remove_by_value(10)
+    captured = capsys.readouterr()
+    assert 'Linked list is empty' in captured.out
+
+def test_remove_by_value_not_found(ll, capsys):
+    ll.insert_values([1, 2, 3])
+    ll.remove_by_value(99)
+    captured = capsys.readouterr()
+    assert 'Value not found' in captured.out
+
+def test_remove_by_value(ll):
+    ll.insert_values([5, 6, 7, 8])
+    ll.remove_by_value(7)
+    current = ll.head
+    values = []
+    while current:
+        values.append(current.data)
+        current = current.nxt
+    assert values == [5, 6, 8]
+
+def test_remove_by_value_first(ll):
+    ll.insert_values([5, 6, 7])
+    ll.remove_by_value(5)
+    current = ll.head
+    values = []
+    while current:
+        values.append(current.data)
+        current = current.nxt
+    assert values == [6, 7]
+
+def test_remove_by_value_last(ll):
+    ll.insert_values([1, 2, 3])
+    ll.remove_by_value(3)
+    current = ll.head
+    values = []
+    while current:
+        values.append(current.data)
+        current = current.nxt
+    assert values == [1, 2]
+
+def test_remove_by_value_multiple(ll):
+    ll.insert_values([1, 2, 2, 3])
+    ll.remove_by_value(2)
+    current = ll.head
+    values = []
+    while current:
+        values.append(current.data)
+        current = current.nxt
+    assert values == [1, 2, 3]
+
