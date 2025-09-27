@@ -76,3 +76,30 @@ class LinkedList:
             itr = itr.nxt
         return count
 
+    def remove_at(self, index: int) -> None:
+        """
+        Remove at an specified index
+
+        Args:
+            index (int): index of item to be removed
+        """
+        if not self.head:
+            print('Linked list is empty')
+            return
+
+        if index < 0 or index >= self.get_length():
+            raise IndexError('Out of index')
+
+        if index == 0:
+            self.head = self.head.nxt
+            return
+
+        count = 0
+        itr = self.head
+        while itr:
+            if count == index - 1 and itr.nxt:
+                itr.nxt = itr.nxt.nxt
+                return
+            itr = itr.nxt
+            count += 1
+
