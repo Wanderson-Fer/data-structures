@@ -197,3 +197,15 @@ def test_remove_by_value_multiple(ll):
         current = current.nxt
     assert values == [1, 2, 3]
 
+def test_print_empty(ll, capsys):
+    ll.print()
+    captured = capsys.readouterr()
+    assert 'Linked list is empty' in captured.out
+
+def test_print_non_empty(ll, capsys):
+    ll.insert_at_beggining(1)
+    ll.insert_at_beggining(2)
+    ll.insert_at_beggining(3)
+    ll.print()
+    captured = capsys.readouterr()
+    assert 'head-->3-->2-->1-->tail' in captured.out
