@@ -130,3 +130,27 @@ class LinkedList:
             itr = itr.nxt
             count += 1
 
+    def remove_by_value(self, data: Any) -> None:
+        """
+        Remove item by its value
+
+        Args:
+            data (Any): value to be searched
+        """
+        if not self.head:
+            print('Linked list is empty')
+            return
+
+        if self.head.data == data:
+            self.head = self.head.nxt
+            return
+
+        itr = self.head
+        while itr.nxt:
+            if itr.nxt.data == data:
+                itr.nxt = itr.nxt.nxt
+                return
+            itr = itr.nxt
+
+        print('Value not found"')
+
