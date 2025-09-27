@@ -154,3 +154,14 @@ class LinkedList:
 
         print('Value not found"')
 
+    def print(self):
+        """Print the linked list elements."""
+        if not self.head:
+            print('Linked list is empty')
+            return
+        itr = self.head
+        linkedl_str = ''
+        while itr:
+            linkedl_str += str(itr.data)+'-->'
+            itr = itr.nxt
+        print(f'head-->{linkedl_str}tail')
