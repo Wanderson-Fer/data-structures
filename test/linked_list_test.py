@@ -56,3 +56,12 @@ def test_insert_dict_values(ll):
         current = current.nxt
     assert values == [{1: 'a'}, {2: 'b'}, {3: 'c'}]
 
+def test_get_length_empty(ll):
+    assert ll.get_length() == 0
+
+def test_get_length_non_empty(ll):
+    ll.insert_at_beggining(1)
+    ll.insert_at_beggining(2)
+    ll.insert_at_beggining(3)
+    assert ll.get_length() == 3
+
