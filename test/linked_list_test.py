@@ -34,3 +34,25 @@ def test_insert_at_end_non_empty(ll):
         current = current.nxt
     assert values == [1, 2, 3]
 
+def test_insert_list_of_values(ll):
+    ll.insert_values([1, 2, 3, 4])
+    current = ll.head
+    values = []
+    while current:
+        values.append(current.data)
+        current = current.nxt
+    assert values == [1, 2, 3, 4]
+
+def test_insert_empty_list(ll):
+    ll.insert_values([])
+    assert ll.head is None
+
+def test_insert_dict_values(ll):
+    ll.insert_values([{1: 'a'}, {2: 'b'}, {3: 'c'}])
+    current = ll.head
+    values = []
+    while current:
+        values.append(current.data)
+        current = current.nxt
+    assert values == [{1: 'a'}, {2: 'b'}, {3: 'c'}]
+
