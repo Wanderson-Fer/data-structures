@@ -105,3 +105,44 @@ def test_remove_at_first_item(ll):
         current = current.nxt
     assert values == [200, 300]
 
+def test_insert_at_beginning_position(ll):
+    ll.insert_values([1, 2, 3])
+    ll.insert_at(0, 99)
+    current = ll.head
+    values = []
+    while current:
+        values.append(current.data)
+        current = current.nxt
+    assert values == [99, 1, 2, 3]
+
+def test_insert_at_end_position(ll):
+    ll.insert_values([1, 2, 3])
+    ll.insert_at(2, 77)
+    current = ll.head
+    values = []
+    while current:
+        values.append(current.data)
+        current = current.nxt
+    assert values == [1, 2, 77, 3]
+
+def test_insert_at_middle(ll):
+    ll.insert_values([10, 20, 30, 40])
+    ll.insert_at(2, 25)  # Insert at index 2
+    current = ll.head
+    values = []
+    while current:
+        values.append(current.data)
+        current = current.nxt
+    assert values == [10, 20, 25, 30, 40]
+
+def test_insert_at_invalid_index(ll):
+    ll.insert_values([1, 2, 3])
+    with pytest.raises(IndexError):
+        ll.insert_at(-1, 5)
+    with pytest.raises(IndexError):
+        ll.insert_at(10, 5)
+
+def test_insert_at_empty_list(ll):
+    ll.insert_at(0, 123)
+    assert ll.head.data == 123
+
