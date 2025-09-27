@@ -65,3 +65,43 @@ def test_get_length_non_empty(ll):
     ll.insert_at_beggining(3)
     assert ll.get_length() == 3
 
+def test_remove_at_empty_list(ll, capsys):
+    ll.remove_at(0)
+    captured = capsys.readouterr()
+    assert 'Linked list is empty' in captured.out
+
+def test_remove_at_last_item(ll):
+    ll.insert_values([10])
+    ll.remove_at(0)
+    assert ll.head is None
+
+def test_remove_at_last_item_multiple(ll):
+    ll.insert_values([1, 2, 3])
+    ll.remove_at(2)
+    current = ll.head
+    values = []
+    while current:
+        values.append(current.data)
+        current = current.nxt
+    assert values == [1, 2]
+
+def test_remove_at_non_empty(ll):
+    ll.insert_values([1, 2, 3, 4])
+    ll.remove_at(2)
+    current = ll.head
+    values = []
+    while current:
+        values.append(current.data)
+        current = current.nxt
+    assert values == [1, 2, 4]
+
+def test_remove_at_first_item(ll):
+    ll.insert_values([100, 200, 300])
+    ll.remove_at(0)
+    current = ll.head
+    values = []
+    while current:
+        values.append(current.data)
+        current = current.nxt
+    assert values == [200, 300]
+
