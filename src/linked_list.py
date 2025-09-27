@@ -51,3 +51,14 @@ class LinkedList:
             itr = itr.nxt
         itr.nxt = Node(data, None)
 
+    def insert_values(self, data_list: Iterable[Any]):
+        """
+        Insert multiple values into the linked list.
+
+        Args:
+            data_list: List of values to insert.
+        """
+        self.head = None
+        for data in data_list:
+            self.insert_at_end(data)
+
