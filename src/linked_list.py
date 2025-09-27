@@ -62,3 +62,17 @@ class LinkedList:
         for data in data_list:
             self.insert_at_end(data)
 
+    def get_length(self) -> int:
+        """
+        Get the length of the linked list.
+
+        Returns:
+            Length of the list.
+        """
+        count = 0
+        itr = self.head
+        while itr:
+            count += 1
+            itr = itr.nxt
+        return count
+
