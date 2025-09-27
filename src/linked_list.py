@@ -103,3 +103,30 @@ class LinkedList:
             itr = itr.nxt
             count += 1
 
+    def insert_at(self, index: int, data: Any) -> None:
+        """
+        Insert at an specified position
+
+        Args:
+            index (int): position to insert item
+        """
+        if index < 0 or index > self.get_length():
+            raise IndexError('Out of index')
+
+        if index == 0:
+            self.insert_at_beggining(data)
+            return
+
+        if not self.head:
+            print('Linked list is empty')
+            return
+
+        count = 0
+        itr = self.head
+        while itr:
+            if count == index - 1:
+                itr.nxt = Node(data, itr.nxt)
+                return
+            itr = itr.nxt
+            count += 1
+
