@@ -26,7 +26,7 @@ class HashTable:
             h += ord(char)
         return h % self.max
 
-    def add(self, key: str, value):
+    def __setitem__(self, key: str, value):
         """
         Add a key-value pair to the hash table.
 
@@ -37,7 +37,7 @@ class HashTable:
         h = self.get_hash(key)
         self.arr[h] = value
 
-    def get(self, key: str):
+    def __getitem__(self, key: str):
         """
         Retrieve value by key.
 
